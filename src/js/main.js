@@ -21,7 +21,7 @@ for (i=0;i<articles.length;i++) {
 
 const showIt = (elementRule, id) => {
     elementRule.style.opacity = 1;
-    elementRule.style.height = `${articlesHeight[id] + 20}px`;
+    elementRule.style.height = `${articlesHeight[id] + 40}px`;
     elementRule.style.transform = `scaleY(1)`;
     elementRule.style.paddingTop = `20px`;
 }
