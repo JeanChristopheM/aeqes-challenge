@@ -51,3 +51,21 @@ window.addEventListener('click', (e) => {
         }
     }
 });
+
+let input = document.querySelector('.searchInput');
+input.addEventListener('input', () => {
+    if (input.value.length >= 3) {
+        for (item of articles) {
+            if (item.textContent.search(input.value) != -1) {
+                console.log(`matched with ${item.id}`);
+                /* item.classList.toggle('disapear'); */
+            }
+        }
+    }
+});
+
+/* let faq = document.querySelector('.faq');
+setTimeout(() => {
+    console.log("yolo");
+    faq.classList.toggle('disapear');
+}, 1000); */

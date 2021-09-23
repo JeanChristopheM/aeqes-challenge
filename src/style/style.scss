@@ -43,3 +43,9 @@ article {
         }
     }
 }
+@import 'keyframes';
+.disapear {
+    animation-name: disapear;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
