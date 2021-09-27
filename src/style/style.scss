@@ -46,6 +46,9 @@ article {
 @import 'keyframes';
 .disapear {
     animation-name: disapear;
-    animation-duration: 1s;
+    animation-duration: .5s;
     animation-fill-mode: forwards;
+}
+.beGone {
+    display:none;
 }
