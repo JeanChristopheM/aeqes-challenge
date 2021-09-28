@@ -7,8 +7,6 @@ body {
     grid-template-areas:    "nav header"
                             "nav main";
 }
-body>* {
-}
 aside {
     position:fixed;
     min-height:100vh;
