@@ -22,6 +22,8 @@ for (item of articles) {
         }
     }
 
+
+
 const showIt = (elementRule, id) => {
     elementRule.style.opacity = 1;
     elementRule.style.height = `${articlesHeight[id] + 40}px`;
@@ -34,24 +36,32 @@ const hideIt = (elementRule) => {
     elementRule.style.transform = `scaleY(0)`;
     elementRule.style.paddingTop = `0px`;
 }
+let svgList = document.querySelectorAll('.vertical');
+
+let test = document.querySelector('#svg0');
+test.addEventListener('click', () => {
+    test.children[0].children[0].classList.add('shrinkVertical');
+});
 
 window.addEventListener('click', (e) => {
     let target = e.composedPath();
-    if (target[0].nodeName == "H2" && target[1].nodeName == "ARTICLE") {
-        let targetRule;
-        let id = target[0].nextElementSibling.id;
+    if (target[0].nodeName == "H2" && target[1].classList[0] == "heading") {
+        let id = target[0].parentElement.parentElement.children[1].id;
         let idNumber = id.slice(2, id.length);
-        targetRule = articlesRules[idNumber];
+        let targetRule = articlesRules[idNumber];
         if(targetRule.style.opacity == 0) {
-            target[0].nextElementSibling.classList.add('showing');
+            target[0].parentElement.parentElement.children[1].classList.add('showing');
             showIt(targetRule, idNumber);
+            svgList[idNumber].classList.add('shrinkVertical');
             for (i=0;i<articlesRules.length;i++) {
                 if (i != idNumber) {
                     hideIt(articlesRules[i]);
+                    svgList[i].classList.remove('shrinkVertical');
                 }
             }
         } else {
-            target[0].nextElementSibling.classList.remove('showing');
+            target[0].nextElementSibling.children[0].children[0].classList.remove('shrinkVertical');
+            target[0].parentElement.parentElement.children[1].classList.remove('showing');
             hideIt(targetRule);
         }
     }

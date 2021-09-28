@@ -1,24 +1,91 @@
 @import 'reset';
 @import 'normalize';
-
-body>* {
-    max-width: 90vw;
-    margin:0 auto;
+body {
+    display:grid;
+    grid-template-columns: 300px auto;
+    grid-template-rows: 400px auto;
+    grid-template-areas:    "nav header"
+                            "nav main";
 }
-
+body>* {
+}
+aside {
+    position:fixed;
+    min-height:100vh;
+    width:300px;
+    grid-area: nav;
+    border-right: 1px solid black;
+    padding:2em;
+    svg {
+        display:block;
+        margin:0 auto 2em auto;
+    }
+    nav {
+        display:flex;
+        flex-direction: column;
+        a {
+            padding-block: 1em;
+            display: block;
+            margin:0 auto;
+            & + a {
+                border-top: 1px solid grey;
+            }
+        }
+    }
+}
 header {
     height:400px;
     background-image: url('https://aeqes-coconstruction.be/wp-content/themes/AEQES/assets/images/activites-top.jpg');
     background-size: cover;
     background-position-x: center;
     background-position-y: top;
+    grid-area: header;
 }
 main {
     padding: 1em;
+    grid-area: main;
 }
 article {
     margin:1em 1em;
     box-shadow: 0px 0px 5px hsla(125, 0%, 0%, .5);
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        svg {
+            flex-basis: 40px;
+            flex-shrink: 0;
+            height:40px;
+            width:40px;
+            background-color: rgb(235, 235, 235);
+            border-radius: 50%;
+            align-self: center;
+            margin-right:10px;
+            padding:.5em;
+            g {
+                transform: translate(1px, 1px);
+            }
+            .horizontal {
+                transform: translate(-2px, -8.604px);
+            }
+            .vertical {
+                transform: translate(-8.604px, -2px);
+                transition: all .2s;
+            }
+            .shrinkVertical {
+                transition: all .2s;
+                transform: translate(-8.604px, -2px) scaleY(0);
+                transform-origin: center;
+            }
+        }
+        .cls-1 {
+            fill: none;
+            stroke: #5dcc31;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2px;
+            stroke-dasharray: 36.77 36.77;
+        }
+    }
     h2 {
         cursor: pointer;
         padding:1em;
@@ -52,3 +119,5 @@ article {
 .beGone {
     display:none;
 }
+
+
