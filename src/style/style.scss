@@ -42,6 +42,34 @@ header {
 main {
     padding: 1em;
     grid-area: main;
+    margin-top:-100px;
+}
+input {
+    box-sizing: border-box;
+    border: 1px solid hsla(125, 0%, 0%, .2);
+    height:40px;
+    width:calc(100% - 2em);
+    border-radius: 20px;
+    display:block;
+    margin:1em 1em;
+}
+.input {
+    position:relative;
+    svg {
+        position:absolute;
+        top:0px;
+        right:1em;
+        height:40px;
+        background-color: #5dcc31;
+        border-radius: 50%;
+        transform-origin: center;
+        transform: scale(.8);
+        path {
+            transform: scale(.7);
+            transform-origin: center;
+            fill:white;
+        }
+    }
 }
 article {
     margin:1em 1em;
