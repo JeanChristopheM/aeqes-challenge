@@ -44,12 +44,12 @@ const hideIt = (elementRule) => {
 
 window.addEventListener('click', (e) => {
     let target = e.composedPath();
-    if (target[0].nodeName == "H2" && target[1].classList[0] == "heading") {
-        let id = target[0].parentElement.parentElement.children[1].id;
+    if ((target[0].nodeName == "H2" && target[1].classList[0] == "heading") || (target[0].nodeName == "svg" && target[1].classList[0] == "heading")) {
+        let id = target[2].children[1].id;
         let idNumber = id.slice(2, id.length);
         let targetRule = articlesRules[idNumber];
         if(targetRule.style.opacity == 0) {
-            target[0].parentElement.parentElement.children[1].classList.add('showing');
+            target[2].children[1].classList.add('showing');
             showIt(targetRule, idNumber);
             svgList[idNumber].classList.add('shrinkVertical');
             for (i=0;i<articlesRules.length;i++) {
@@ -59,8 +59,8 @@ window.addEventListener('click', (e) => {
                 }
             }
         } else {
-            target[0].nextElementSibling.children[0].children[0].classList.remove('shrinkVertical');
-            target[0].parentElement.parentElement.children[1].classList.remove('showing');
+            target[1].children[1].children[0].children[0].classList.remove('shrinkVertical');
+            target[2].children[1].classList.remove('showing');
             hideIt(targetRule);
         }
     }
@@ -74,7 +74,6 @@ input.addEventListener('input', () => {
         let unmatched = [];
         for (item of articles) {
             if (item.textContent.search(input.value) != -1) {
-                console.log(`matched with ${item.id}`);
                 item.parentElement.classList.remove('disapear');
                 item.parentElement.classList.remove('beGone');
             } else {
@@ -84,7 +83,6 @@ input.addEventListener('input', () => {
         for (let i=0;i<unmatched.length;i++) {
             unmatched[i].parentElement.classList.add('disapear');
             setTimeout(() => {
-                console.log(unmatched[i]);
                 unmatched[i].parentElement.classList.add('beGone');
             }, 500);
         }

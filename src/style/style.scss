@@ -6,31 +6,9 @@ body {
     grid-template-rows: 400px auto;
     grid-template-areas:    "nav header"
                             "nav main";
+    font-size:13px;
 }
-aside {
-    position:fixed;
-    min-height:100vh;
-    width:300px;
-    grid-area: nav;
-    border-right: 1px solid black;
-    padding:2em;
-    svg {
-        display:block;
-        margin:0 auto 2em auto;
-    }
-    nav {
-        display:flex;
-        flex-direction: column;
-        a {
-            padding-block: 1em;
-            display: block;
-            margin:0 auto;
-            & + a {
-                border-top: 1px solid grey;
-            }
-        }
-    }
-}
+@import 'aside';
 header {
     height:400px;
     background-image: url('https://aeqes-coconstruction.be/wp-content/themes/AEQES/assets/images/activites-top.jpg');
@@ -44,21 +22,26 @@ main {
     grid-area: main;
     margin-top:-100px;
 }
+.faq {
+    font-size:4em;
+    padding-block: 1rem;
+}
 input {
     box-sizing: border-box;
     border: 1px solid hsla(125, 0%, 0%, .2);
     height:40px;
-    width:calc(100% - 2em);
+    width:100%;
     border-radius: 20px;
     display:block;
-    margin:1em 1em;
+    margin:2em 2em;
 }
 .input {
     position:relative;
+    max-width: 80%;
     svg {
         position:absolute;
-        top:0px;
-        right:1em;
+        top:0;
+        right:-2em;
         height:40px;
         background-color: #5dcc31;
         border-radius: 50%;
@@ -71,71 +54,7 @@ input {
         }
     }
 }
-article {
-    margin:1em 1em;
-    box-shadow: 0px 0px 5px hsla(125, 0%, 0%, .5);
-    .heading {
-        display: flex;
-        justify-content: space-between;
-        svg {
-            flex-basis: 40px;
-            flex-shrink: 0;
-            height:40px;
-            width:40px;
-            background-color: rgb(235, 235, 235);
-            border-radius: 50%;
-            align-self: center;
-            margin-right:10px;
-            padding:.5em;
-            g {
-                transform: translate(1px, 1px);
-            }
-            .horizontal {
-                transform: translate(-2px, -8.604px);
-            }
-            .vertical {
-                transform: translate(-8.604px, -2px);
-                transition: all .2s;
-            }
-            .shrinkVertical {
-                transition: all .2s;
-                transform: translate(-8.604px, -2px) scaleY(0);
-                transform-origin: center;
-            }
-        }
-        .cls-1 {
-            fill: none;
-            stroke: #5dcc31;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-width: 2px;
-            stroke-dasharray: 36.77 36.77;
-        }
-    }
-    h2 {
-        cursor: pointer;
-        padding:1em;
-    }
-    p {
-        opacity: 0;
-        transform: scaleY(0);
-        transform-origin: top;
-        transition: all .2s ease-out;
-        padding-left: 1em;
-        padding-right: 1em;
-        position:relative;
-        &::before {
-            content:'';
-            width: 60%;
-            height: 0px;
-            position:absolute;
-            border-top: 1px solid hsla(125, 0%, 0%, .5);
-            top:0;
-            left:50%;
-            transform: translateX(-50%);
-        }
-    }
-}
+@import 'articles';
 @import 'keyframes';
 .disapear {
     animation-name: disapear;
@@ -146,4 +65,5 @@ article {
     display:none;
 }
 
+@import 'mediaQueries';
 

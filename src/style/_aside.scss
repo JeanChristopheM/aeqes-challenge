@@ -1,0 +1,24 @@
+aside {
+    position:fixed;
+    min-height:100vh;
+    width:300px;
+    grid-area: nav;
+    border-right: 1px solid black;
+    padding:2em;
+    svg {
+        display:block;
+        margin:0 auto 2em auto;
+    }
+    nav {
+        display:flex;
+        flex-direction: column;
+        a {
+            padding-block: 1em;
+            display: block;
+            margin:0 auto;
+            & + a {
+                border-top: 1px solid grey;
+            }
+        }
+    }
+}
