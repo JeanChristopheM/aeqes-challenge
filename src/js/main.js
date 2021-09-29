@@ -3,7 +3,7 @@ let stylesheet = document.styleSheets[0];
 // * Finding the articles
 let articles = document.querySelectorAll('.articleText');
 
-// * Recording their height
+// * Recording their height in the articlesHeight array
 let articlesHeight = [];
 for (item of articles) {
     articlesHeight.push(item.offsetHeight);
@@ -14,16 +14,21 @@ for (item of articles) {
         articles[i].id = `id${i}`;
         stylesheet.insertRule(`.articleText#id${i}{height:0px}`, 0);
     }
-// * Recording them rules
+// * Recording them rules in the articlesRules array
     let articlesRules = [];
     for (i=0;i<articles.length;i++) {
         for (rule of stylesheet.cssRules) {
             if (rule.selectorText == `.articleText#id${i}`) articlesRules.push(rule);
         }
     }
+    
+// * Recording the SVG's in the svgList array
+let svgList = document.querySelectorAll('.vertical');
 
-
-
+/**
+* @param {CSSrule}  elementRule     CSS rule that needs to be modified.
+* @param {string}   id              ID of the element that needs to be modified.
+*/
 const showIt = (elementRule, id) => {
     elementRule.style.opacity = 1;
     elementRule.style.height = `${articlesHeight[id] + 40}px`;
@@ -36,12 +41,6 @@ const hideIt = (elementRule) => {
     elementRule.style.transform = `scaleY(0)`;
     elementRule.style.paddingTop = `0px`;
 }
-let svgList = document.querySelectorAll('.vertical');
-
-let test = document.querySelector('#svg0');
-test.addEventListener('click', () => {
-    test.children[0].children[0].classList.add('shrinkVertical');
-});
 
 window.addEventListener('click', (e) => {
     let target = e.composedPath();
@@ -67,6 +66,8 @@ window.addEventListener('click', (e) => {
     }
 });
 
+
+// * Input stuff
 let input = document.querySelector('.searchInput');
 input.addEventListener('input', () => {
     if (input.value.length >= 3) {
@@ -94,11 +95,5 @@ input.addEventListener('input', () => {
         }
     }
 });
-
-/* let faq = document.querySelector('.faq');
-faq.classList.toggle('disapear');
-setTimeout(() => {
-    faq.classList.toggle('beGone');
-}, 500); */
 
 
